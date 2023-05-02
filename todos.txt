@@ -3,6 +3,6 @@ write program
 sleep
 fixing
 turn of the light
-new todo1
-nauka
-sztuka
+test
+zakupy
+spac
