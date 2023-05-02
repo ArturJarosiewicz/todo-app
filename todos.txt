@@ -4,3 +4,5 @@ sleep
 fixing
 turn of the light
 new todo1
+nauka
+sztuka
