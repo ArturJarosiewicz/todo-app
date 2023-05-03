@@ -2,8 +2,9 @@ import functions
 import PySimpleGUI as sg
 
 layout = [[sg.Text('Type in a TO-DO')],
-        [sg.InputText(key='todo'), sg.Button('Add')],
-        [sg.Listbox(values=functions.get_todos(), enable_events=True, size=(45, 10), key='todos'), sg.Button('Edit')]]
+         [sg.InputText(key='todo'), sg.Button('Add')],
+         [sg.Listbox(values=functions.get_todos(), enable_events=True, size=(45, 10), key='todos'), sg.Button('Edit'), sg.Button('Complete')],
+          [sg.Button('Exit')]]
 
 window = sg.Window('My To-Do app', layout, font=('Ariel', 16))
 
@@ -27,6 +28,17 @@ while True:
 
                         functions.write_todos(todos)
                         window['todos'].update(values=todos)
+                case 'Complete':
+                        todo_to_complete = values['todos'][0]
+
+                        todos = functions.get_todos()
+                        todos.remove(todo_to_complete)
+
+                        functions.write_todos(todos)
+                        window['todos'].update(values=todos)
+                        window['todo'].update(value='')
+                case 'Exit':
+                        break
                 case 'todos':
                         window['todo'].update(value=values['todos'][0])
 
